@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="PRG3204_Project_Group4.Site" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Campus Events</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Styles/MyStyle.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <nav class="navbar navbar-expand-xl navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" href="<%: ResolveUrl("~/Default.aspx") %>">Campus Events</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse justify-content-between" id="mainNav">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item"><a class="<%: NavClass("~/Default.aspx") %>" href="<%: ResolveUrl("~/Default.aspx") %>">Home</a></li>
+                            <li class="nav-item"><a class="<%: NavClass("~/Events/Default.aspx") %>" href="<%: ResolveUrl("~/Events/Default.aspx") %>">Events</a></li>
+                            <li class="nav-item"><a class="<%: NavClass("~/Events/Calendar.aspx") %>" href="<%: ResolveUrl("~/Events/Calendar.aspx") %>">Calendar</a></li>
+                            <li class="nav-item"><a class="<%: NavClass("~/Events/Search.aspx") %>" href="<%: ResolveUrl("~/Events/Search.aspx") %>">Search</a></li>
+                            <asp:PlaceHolder ID="phRegistrations" runat="server" Visible="false">
+                                <li class="nav-item"><a class="<%: NavClass("~/Registrations/Default.aspx") %>" href="<%: ResolveUrl("~/Registrations/Default.aspx") %>">My Registrations</a></li>
+                            </asp:PlaceHolder>
+                            <asp:PlaceHolder ID="phContact" runat="server" Visible="false">
+                                <li class="nav-item"><a class="<%: NavClass("~/Enquiries/Contact.aspx") %>" href="<%: ResolveUrl("~/Enquiries/Contact.aspx") %>">Contact Organizer</a></li>
+                            </asp:PlaceHolder>
+                            <asp:PlaceHolder ID="phManage" runat="server" Visible="false">
+                                <li class="nav-item"><a class="<%: NavClass("~/Events/Manage.aspx") %>" href="<%: ResolveUrl("~/Events/Manage.aspx") %>">Manage Events</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Reports</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="<%: DropdownClass("~/Reports/Attendance.aspx") %>" href="<%: ResolveUrl("~/Reports/Attendance.aspx") %>">Attendance Summary</a></li>
+                                        <li><a class="<%: DropdownClass("~/Reports/Popular.aspx") %>" href="<%: ResolveUrl("~/Reports/Popular.aspx") %>">Popular Events</a></li>
+                                        <li><a class="<%: DropdownClass("~/Reports/Feedback.aspx") %>" href="<%: ResolveUrl("~/Reports/Feedback.aspx") %>">Feedback Results</a></li>
+                                    </ul>
+                                </li>
+                            </asp:PlaceHolder>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <asp:PlaceHolder ID="phGuest" runat="server">
+                                <li class="nav-item"><a class="<%: NavClass("~/Account/Login.aspx") %>" href="<%: ResolveUrl("~/Account/Login.aspx") %>">Login</a></li>
+                                <li class="nav-item"><a class="<%: NavClass("~/Account/Register.aspx") %>" href="<%: ResolveUrl("~/Account/Register.aspx") %>">Register</a></li>
+                            </asp:PlaceHolder>
+                            <asp:PlaceHolder ID="phAccount" runat="server" Visible="false">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><%: UserName %></a>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="<%: DropdownClass("~/Account/Profile.aspx") %>" href="<%: ResolveUrl("~/Account/Profile.aspx") %>">Profile</a></li>
+                                        <li><a class="<%: DropdownClass("~/Account/ChangePassword.aspx") %>" href="<%: ResolveUrl("~/Account/ChangePassword.aspx") %>">Change Password</a></li>
+                                        <li><hr class="dropdown-divider" /></li>
+                                        <li><asp:LinkButton ID="lnkLogout" runat="server" CssClass="dropdown-item" CausesValidation="false" OnClick="lnkLogout_Click">Logout</asp:LinkButton></li>
+                                    </ul>
+                                </li>
+                            </asp:PlaceHolder>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="container pb-3">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+        </main>
+
+        <footer class="site-footer border-top text-muted">
+            <div class="container">
+                &copy; <%: DateTime.Now.Year %> Campus Event Management System
+            </div>
+        </footer>
+    </form>
+
+    <script src="<%: ResolveUrl("~/Scripts/bootstrap.bundle.min.js") %>"></script>
+</body>
+</html>
