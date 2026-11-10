@@ -151,6 +151,8 @@ SELECT Status FROM dbo.Registrations WHERE EventId=@EventId AND UserId=@UserId;"
             catch (SqlException exception) { ShowDatabaseError(exception); return; }
             if (result.Success)
             {
+                NotificationService.RegistrationConfirmed(userId, currentEventId);
+
                 // POST-Redirect-GET: refreshing history cannot submit another booking.
                 Response.Redirect(ResolveUrl("~/Registrations/Default.aspx"), false);
                 Context.ApplicationInstance.CompleteRequest();
