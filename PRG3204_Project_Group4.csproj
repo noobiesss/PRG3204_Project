@@ -110,6 +110,7 @@
       <DependentUpon>Create.aspx</DependentUpon>
     </Compile>
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\RegistrationService.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -220,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ConnectionStrings.example.config" />
+    <None Include="Email.example.config" />
     <None Include="Database\CampusEventManagementDb_WebForms_v2.1.sql" />
     <None Include="Database\SeedTestAccounts.sql" />
     <None Include="packages.config" />

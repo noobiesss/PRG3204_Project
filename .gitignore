@@ -483,3 +483,6 @@ $RECYCLE.BIN/
 
 # Each developer's local database connection
 ConnectionStrings.config
+
+# Each developer's email account settings
+Email.config
