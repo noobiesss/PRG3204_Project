@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
+    <div class="col-md-6 col-lg-5 clearable-form">
         <h1 class="mb-3">Login</h1>
         <asp:Label ID="lblMessage" runat="server" Visible="false" role="alert" />
         <div class="mb-3">

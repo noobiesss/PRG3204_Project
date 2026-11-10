@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Campus Events</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Styles/MyStyle.css" rel="stylesheet" />
+    <%-- Change v= whenever MyStyle.css changes so browsers fetch the new file --%>
+    <link href="~/Styles/MyStyle.css?v=2" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
@@ -84,6 +85,36 @@
         // message can disappear on blur and move the button before the click finishes.
         document.addEventListener('mousedown', function (e) {
             if (e.target.matches('input[type=submit]')) e.preventDefault();
+        });
+
+        // Add a clear (x) button to text boxes inside any element with class "clearable-form".
+        document.querySelectorAll('.clearable-form input.form-control:not([type=date])').forEach(function (input) {
+            var wrap = document.createElement('div');
+            wrap.className = 'clear-wrap';
+            input.parentNode.insertBefore(wrap, input);
+            wrap.appendChild(input);
+
+            var button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'clear-btn';
+            button.tabIndex = -1;
+            button.setAttribute('aria-label', 'Clear');
+            button.innerHTML = '&times;';
+            wrap.appendChild(button);
+
+            function update() { wrap.classList.toggle('has-value', input.value !== ''); }
+            input.addEventListener('input', update);
+            input.addEventListener('change', update);
+            input.addEventListener('focus', update);
+            // Keep focus in the text box so validator messages do not jump on blur.
+            button.addEventListener('mousedown', function (e) { e.preventDefault(); });
+            button.addEventListener('click', function () {
+                input.value = '';
+                update();
+                input.focus();
+            });
+            update();
+            setTimeout(update, 500); // browser autofill can fill the box after load
         });
     </script>
 </body>
