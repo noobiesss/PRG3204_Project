@@ -78,5 +78,12 @@
     </form>
 
     <script src="<%: ResolveUrl("~/Scripts/bootstrap.bundle.min.js") %>"></script>
+    <script>
+        // Keep focus in the text box while pressing a button. Otherwise a validator
+        // message can disappear on blur and move the button before the click finishes.
+        document.addEventListener('mousedown', function (e) {
+            if (e.target.matches('input[type=submit]')) e.preventDefault();
+        });
+    </script>
 </body>
 </html>
