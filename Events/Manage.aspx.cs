@@ -203,7 +203,7 @@ namespace PRG3204_Project_Group4.Events
             if (original.Length > 255) original = original.Substring(original.Length - 255);
             // Check file signatures, not just the extension.
             byte[] magic = new byte[8];
-            using (Stream stream = fuResource.PostedFile.InputStream)
+            Stream stream = fuResource.PostedFile.InputStream;
             {
                 int read = stream.Read(magic, 0, magic.Length);
                 bool pdf = read >= 5 && magic[0] == 0x25 && magic[1] == 0x50 && magic[2] == 0x44 && magic[3] == 0x46 && magic[4] == 0x2D;
