@@ -21,7 +21,7 @@ namespace PRG3204_Project_Group4
             phGuest.Visible = !isLoggedIn;
             phAccount.Visible = isLoggedIn;
             phContact.Visible = isLoggedIn;
-            phRegistrations.Visible = role == "Student" || role == "Staff";
+            phRegistrations.Visible = role == "Student";
             phManage.Visible = role == "Staff" || role == "Admin";
         }
 
