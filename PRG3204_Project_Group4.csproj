@@ -69,6 +69,7 @@
     <Content Include="Registrations\Create.aspx" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Styles\MyStyle.css" />
+    <Content Include="Styles\M4Reports.css" />
     <Content Include="Site.Master" />
     <Content Include="Default.aspx" />
     <Content Include="Events\Default.aspx" />
