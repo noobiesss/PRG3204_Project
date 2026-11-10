@@ -28,6 +28,7 @@
                             <li class="nav-item"><a class="<%: NavClass("~/Events/Search.aspx") %>" href="<%: ResolveUrl("~/Events/Search.aspx") %>">Search</a></li>
                             <asp:PlaceHolder ID="phRegistrations" runat="server" Visible="false">
                                 <li class="nav-item"><a class="<%: NavClass("~/Registrations/Default.aspx") %>" href="<%: ResolveUrl("~/Registrations/Default.aspx") %>">My Registrations</a></li>
+                                <li class="nav-item"><a class="<%: NavClass("~/Reports/Feedback.aspx") %>" href="<%: ResolveUrl("~/Reports/Feedback.aspx") %>">Event Feedback</a></li>
                             </asp:PlaceHolder>
                             <asp:PlaceHolder ID="phContact" runat="server" Visible="false">
                                 <li class="nav-item"><a class="<%: NavClass("~/Enquiries/Contact.aspx") %>" href="<%: ResolveUrl("~/Enquiries/Contact.aspx") %>">Contact Organizer</a></li>
