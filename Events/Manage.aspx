@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Manage Events" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="PRG3204_Project_Group4.Events.Manage" %>
+<%@ Page Title="Manage Events" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="PRG3204_Project_Group4.Events.Manage" %>
 
 <asp:Content ID="Content1"
     ContentPlaceHolderID="head"
@@ -53,9 +53,15 @@
 
                         <asp:TextBox ID="txtTitle"
                             runat="server"
+                            ValidateRequestMode="Disabled"
                             MaxLength="200"
                             CssClass="form-control">
                         </asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvtxtTitle"
+                            runat="server" ControlToValidate="txtTitle"
+                            ValidationGroup="EventForm"
+                            ErrorMessage="Title is required."
+                            CssClass="text-danger small" Display="Dynamic" EnableClientScript="true" />
 
                     </div>
 
@@ -70,6 +76,11 @@
                             runat="server"
                             CssClass="form-select">
                         </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvddlCategory"
+                            runat="server" ControlToValidate="ddlCategory"
+                            ValidationGroup="EventForm" InitialValue=""
+                            ErrorMessage="Category is required."
+                            CssClass="text-danger small" Display="Dynamic" EnableClientScript="true" />
 
                     </div>
 
@@ -82,6 +93,7 @@
 
                         <asp:TextBox ID="txtDescription"
                             runat="server"
+                            ValidateRequestMode="Disabled"
                             TextMode="MultiLine"
                             Rows="3"
                             CssClass="form-control">
@@ -98,9 +110,15 @@
 
                         <asp:TextBox ID="txtLocation"
                             runat="server"
+                            ValidateRequestMode="Disabled"
                             MaxLength="200"
                             CssClass="form-control">
                         </asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvtxtLocation"
+                            runat="server" ControlToValidate="txtLocation"
+                            ValidationGroup="EventForm"
+                            ErrorMessage="Location is required."
+                            CssClass="text-danger small" Display="Dynamic" EnableClientScript="true" />
 
                     </div>
 
@@ -116,6 +134,16 @@
                             TextMode="Number"
                             CssClass="form-control">
                         </asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvtxtCapacity"
+                            runat="server" ControlToValidate="txtCapacity"
+                            ValidationGroup="EventForm"
+                            ErrorMessage="Capacity is required."
+                            CssClass="text-danger small" Display="Dynamic" EnableClientScript="true" />
+                        <asp:RangeValidator ID="rvCapacity" runat="server"
+                            ControlToValidate="txtCapacity" ValidationGroup="EventForm"
+                            Type="Integer" MinimumValue="1" MaximumValue="10000"
+                            ErrorMessage="Capacity must be between 1 and 10000."
+                            CssClass="text-danger small" Display="Dynamic" EnableClientScript="true" />
 
                     </div>
 
@@ -131,6 +159,11 @@
                             TextMode="DateTimeLocal"
                             CssClass="form-control">
                         </asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvtxtStartDate"
+                            runat="server" ControlToValidate="txtStartDate"
+                            ValidationGroup="EventForm"
+                            ErrorMessage="Start date/time is required."
+                            CssClass="text-danger small" Display="Dynamic" EnableClientScript="true" />
 
                     </div>
 
@@ -146,6 +179,11 @@
                             TextMode="DateTimeLocal"
                             CssClass="form-control">
                         </asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvtxtEndDate"
+                            runat="server" ControlToValidate="txtEndDate"
+                            ValidationGroup="EventForm"
+                            ErrorMessage="End date/time is required."
+                            CssClass="text-danger small" Display="Dynamic" EnableClientScript="true" />
 
                     </div>
 
@@ -158,6 +196,7 @@
                         runat="server"
                         CssClass="btn btn-primary"
                         Text="Create Event"
+                        ValidationGroup="EventForm"
                         OnClick="btnSave_Click" />
 
                     <asp:Button ID="btnClear"
@@ -205,6 +244,7 @@
                     <asp:Button ID="btnUpload"
                         runat="server"
                         Text="Upload File"
+                        CausesValidation="false"
                         CssClass="btn btn-outline-primary"
                         OnClick="btnUpload_Click" />
 
@@ -323,5 +363,56 @@
         </div>
 
     </div>
+
+
+    <!-- Validate only after the user leaves a field, or when Save is clicked. -->
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var fieldIds = [
+                "<%= txtTitle.ClientID %>",
+                "<%= ddlCategory.ClientID %>",
+                "<%= txtLocation.ClientID %>",
+                "<%= txtCapacity.ClientID %>",
+                "<%= txtStartDate.ClientID %>",
+                "<%= txtEndDate.ClientID %>"
+            ];
+
+            function validateField(element) {
+                if (typeof Page_Validators === "undefined" ||
+                    typeof ValidatorValidate !== "function") {
+                    return;
+                }
+
+                for (var i = 0; i < Page_Validators.length; i++) {
+                    var validator = Page_Validators[i];
+                    if (validator.controltovalidate === element.id &&
+                        validator.validationGroup === "EventForm") {
+                        ValidatorValidate(validator);
+                    }
+                }
+
+                if (typeof ValidatorUpdateIsValid === "function") {
+                    ValidatorUpdateIsValid();
+                }
+            }
+
+            fieldIds.forEach(function (fieldId) {
+                var field = document.getElementById(fieldId);
+                if (!field) return;
+
+                var touched = false;
+                field.addEventListener("blur", function () {
+                    touched = true;
+                    validateField(field);
+                });
+                field.addEventListener("input", function () {
+                    if (touched) validateField(field);
+                });
+                field.addEventListener("change", function () {
+                    if (touched) validateField(field);
+                });
+            });
+        });
+    </script>
 
 </asp:Content>
