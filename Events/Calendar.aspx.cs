@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,6 +14,7 @@ namespace PRG3204_Project_Group4.Events
         private string ConnectionString { get { return ConfigurationManager.ConnectionStrings["CampusEventDB"].ConnectionString; } }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Helpers.EventStatus.UpdateStatuses();
             if (!IsPostBack) { calEvents.SelectedDate = DateTime.UtcNow.AddHours(8).Date; LoadDay(); }
             // DayRender runs after Load; always load the visible month's dates on each request.
             LoadMonthDates();
