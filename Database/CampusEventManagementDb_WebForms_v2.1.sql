@@ -4,6 +4,8 @@
 -- Create and select an empty target database before running this script.
 -- One-time installation: this script does not skip existing tables.
 -- No application data or EF migration history is included.
+-- 2026-11-12: Users.Gender and Users.DateOfBirth are required (NOT NULL).
+--             Existing databases: run Update_UsersGenderDobRequired.sql once.
 
 SET XACT_ABORT ON;
 GO
@@ -25,14 +27,14 @@ CREATE TABLE [Users] (
     [PersonalEmail] nvarchar(100) NULL,
     [PasswordHash] nvarchar(255) NOT NULL,
     [Role] nvarchar(20) NOT NULL DEFAULT N'Student',
-    [Gender] nvarchar(10) NULL,
-    [DateOfBirth] date NULL,
+    [Gender] nvarchar(10) NOT NULL,
+    [DateOfBirth] date NOT NULL,
     [PhoneNumber] nvarchar(20) NULL,
     [Faculty] nvarchar(100) NULL,
     [IsActive] bit NOT NULL DEFAULT CAST(1 AS bit),
     [CreatedAt] datetime2 NOT NULL DEFAULT (SYSUTCDATETIME()),
     CONSTRAINT [PK_Users] PRIMARY KEY ([UserId]),
-    CONSTRAINT [CK_Users_Gender] CHECK ([Gender] IS NULL OR [Gender] IN ('Male', 'Female')),
+    CONSTRAINT [CK_Users_Gender] CHECK ([Gender] IN ('Male', 'Female')),
     CONSTRAINT [CK_Users_Role] CHECK ([Role] IN ('Student', 'Staff', 'Admin')),
     CONSTRAINT [CK_Users_SchoolEmail] CHECK ([SchoolEmail] LIKE '%.edu.my')
 );
