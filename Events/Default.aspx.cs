@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,7 +9,11 @@ namespace PRG3204_Project_Group4.Events
     public partial class Default : Page
     {
         private string ConnectionString { get { return ConfigurationManager.ConnectionStrings["CampusEventDB"].ConnectionString; } }
-        protected void Page_Load(object sender, EventArgs e) { if (!IsPostBack) LoadEvents(); }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Helpers.EventStatus.UpdateStatuses();
+            if (!IsPostBack) LoadEvents();
+        }
         private void LoadEvents()
         {
             // Compute remaining seats from active registrations; M2 must re-check capacity in a transaction.
@@ -53,6 +57,7 @@ namespace PRG3204_Project_Group4.Events
             {
                 rptFiles.DataSource = GetResources(eventId);
                 rptFiles.DataBind();
+                rptFiles.Visible = rptFiles.Items.Count > 0;
             }
         }
         protected DataTable GetResources(int eventId)

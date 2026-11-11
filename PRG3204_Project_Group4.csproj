@@ -147,8 +147,12 @@
     </Compile>
     <Compile Include="Events\Manage.aspx.designer.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
-    </Compile>
+    </Compile> 
+	  
+    <Compile Include="Helpers\EventStatus.cs" />
+	  
     <Compile Include="Registrations\Default.aspx.cs">
+		
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
