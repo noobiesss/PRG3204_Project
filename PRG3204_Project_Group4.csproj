@@ -229,6 +229,7 @@
     <None Include="Email.example.config" />
     <None Include="Database\CampusEventManagementDb_WebForms_v2.1.sql" />
     <None Include="Database\SeedTestAccounts.sql" />
+    <None Include="Database\Update_UsersGenderDobRequired.sql" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

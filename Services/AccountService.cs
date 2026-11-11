@@ -72,6 +72,8 @@ WHERE SchoolEmail = @SchoolEmail;", connection))
         // Public registration can only create Student accounts
         public static AccountResult RegisterStudent(UserAccount account, string password)
         {
+            if (!HasRequiredProfile(account)) return Failure(RequiredProfileMessage);
+
             using (SqlConnection connection = DatabaseHelper.CreateConnection())
             using (SqlCommand command = new SqlCommand(@"
 INSERT INTO dbo.Users
@@ -135,6 +137,8 @@ WHERE UserId = @UserId AND IsActive = 1;", connection))
 
         public static AccountResult UpdateProfile(UserAccount account)
         {
+            if (!HasRequiredProfile(account)) return Failure(RequiredProfileMessage);
+
             using (SqlConnection connection = DatabaseHelper.CreateConnection())
             using (SqlCommand command = new SqlCommand(@"
 UPDATE dbo.Users
@@ -202,10 +206,18 @@ WHERE UserId = @UserId AND IsActive = 1;", connection))
         {
             command.Parameters.Add("@FullName", SqlDbType.NVarChar, 100).Value = account.FullName.Trim();
             command.Parameters.Add("@PersonalEmail", SqlDbType.NVarChar, 100).Value = OptionalText(account.PersonalEmail);
-            command.Parameters.Add("@Gender", SqlDbType.NVarChar, 10).Value = OptionalText(account.Gender);
-            command.Parameters.Add("@DateOfBirth", SqlDbType.Date).Value = account.DateOfBirth.HasValue ? (object)account.DateOfBirth.Value : DBNull.Value;
+            command.Parameters.Add("@Gender", SqlDbType.NVarChar, 10).Value = account.Gender;
+            command.Parameters.Add("@DateOfBirth", SqlDbType.Date).Value = account.DateOfBirth.Value;
             command.Parameters.Add("@PhoneNumber", SqlDbType.NVarChar, 20).Value = OptionalText(account.PhoneNumber);
             command.Parameters.Add("@Faculty", SqlDbType.NVarChar, 100).Value = OptionalText(account.Faculty);
+        }
+
+        // Gender and date of birth are NOT NULL in dbo.Users
+        private const string RequiredProfileMessage = "Gender and date of birth are required.";
+
+        private static bool HasRequiredProfile(UserAccount account)
+        {
+            return (account.Gender == "Male" || account.Gender == "Female") && account.DateOfBirth.HasValue;
         }
 
         private static object OptionalText(string value)
