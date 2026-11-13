@@ -67,8 +67,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Registrations\Create.aspx" />
+    <Content Include="Registrations\Logs.aspx" />
+    <Content Include="Registrations\Modify.aspx" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Styles\MyStyle.css" />
+    <Content Include="Styles\M4Reports.css" />
     <Content Include="Site.Master" />
     <Content Include="Default.aspx" />
     <Content Include="Events\Default.aspx" />
@@ -80,6 +83,8 @@
     <Content Include="Reports\Attendance.aspx" />
     <Content Include="Reports\Popular.aspx" />
     <Content Include="Reports\Feedback.aspx" />
+    <Content Include="Reports\MarkAttendance.aspx" />
+    <Content Include="Registrations\Feedback.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\Profile.aspx" />
@@ -109,9 +114,25 @@
     <Compile Include="Registrations\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Registrations\Logs.aspx.cs">
+      <DependentUpon>Logs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registrations\Logs.aspx.designer.cs">
+      <DependentUpon>Logs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registrations\Modify.aspx.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registrations\Modify.aspx.designer.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\RegistrationChangeService.cs" />
     <Compile Include="Services\RegistrationService.cs" />
+    <Compile Include="Services\SearchAndEnquiryService.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -147,6 +168,7 @@
     <Compile Include="Events\Manage.aspx.designer.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\EventStatus.cs" />
     <Compile Include="Registrations\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -189,6 +211,20 @@
     <Compile Include="Reports\Feedback.aspx.designer.cs">
       <DependentUpon>Feedback.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\MarkAttendance.aspx.cs">
+      <DependentUpon>MarkAttendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\MarkAttendance.aspx.designer.cs">
+      <DependentUpon>MarkAttendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registrations\Feedback.aspx.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registrations\Feedback.aspx.designer.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -224,6 +260,7 @@
     <None Include="Email.example.config" />
     <None Include="Database\CampusEventManagementDb_WebForms_v2.1.sql" />
     <None Include="Database\SeedTestAccounts.sql" />
+    <None Include="Database\Update_UsersGenderDobRequired.sql" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

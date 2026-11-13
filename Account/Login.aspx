@@ -5,14 +5,14 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
+    <div class="col-md-6 col-lg-5 clearable-form">
         <h1 class="mb-3">Login</h1>
         <asp:Label ID="lblMessage" runat="server" Visible="false" role="alert" />
         <div class="mb-3">
             <label class="form-label" for="<%= txtEmail.ClientID %>">School Email</label>
-            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" MaxLength="100" autocomplete="username" />
+            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" MaxLength="100" autocomplete="username" pattern="[^@\s]+@[^@\s]+\.edu\.my" title="Use your school email, e.g. name@school.edu.my" />
             <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="School email is required." Display="Dynamic" CssClass="text-danger small" />
-            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter your school email ending in .edu.my." Display="Dynamic" CssClass="text-danger small" ValidationExpression="^(?=.{1,100}$)[^@\s]+@[^@\s]+\.edu\.my$" />
+            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter your school email, e.g. name@school.edu.my." Display="Dynamic" CssClass="text-danger small" ValidationExpression="^(?=.{1,100}$)[^@\s]+@[^@\s]+\.edu\.my$" />
         </div>
         <div class="mb-3">
             <label class="form-label" for="<%= txtPassword.ClientID %>">Password</label>

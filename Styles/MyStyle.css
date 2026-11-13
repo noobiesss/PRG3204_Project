@@ -17,3 +17,44 @@ body {
     width: 100%;
     line-height: 60px;
 }
+
+/* Clear (x) button inside text boxes, added by Site.Master */
+.clear-wrap {
+    position: relative;
+}
+
+.clear-wrap .form-control {
+    padding-right: 2.25rem;
+}
+
+/* Edge's own password reveal icon would sit under the x */
+.clear-wrap .form-control::-ms-reveal {
+    display: none;
+}
+
+.clear-btn {
+    position: absolute;
+    top: 50%;
+    right: .5rem;
+    transform: translateY(-50%);
+    display: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #6c757d;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    background: #e9ecef;
+    color: #212529;
+}
+
+.clear-wrap.has-value .clear-btn {
+    display: block;
+}

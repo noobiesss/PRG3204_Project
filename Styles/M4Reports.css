@@ -1,0 +1,18 @@
+.m4-report { padding: 0.3rem 0 2rem; }
+.m4-eyebrow { font-size: .78rem; letter-spacing: .11em; text-transform: uppercase; color: #65748b; font-weight: 700; }
+.m4-title { font-weight: 750; letter-spacing: -.025em; color: #172941; }
+.m4-subtitle { color: #66758a; max-width: 720px; }
+.m4-panel { background: #fff; border: 1px solid #e1e8f0; border-radius: 14px; box-shadow: 0 3px 14px rgba(20,40,75,.045); padding: 1.3rem; margin-bottom: 1.25rem; }
+.m4-kpi { padding: 1.25rem; border: 1px solid #e1e8f0; border-radius: 14px; min-height: 122px; background: #fff; }
+.m4-kpi-label { font-size: .82rem; color: #67758b; }
+.m4-kpi-value { font-size: clamp(1.5rem, 2.8vw, 2.2rem); line-height: 1.4; font-weight: 750; color: #183656; }
+.m4-small { color: #708096; font-size: .85rem; }
+.m4-report .table th { color:#354862; font-size:.87rem; background: #f4f7fb; white-space:nowrap; }
+.m4-report .table td { vertical-align:middle; }
+.m4-report .form-label { font-size:.88rem; font-weight:600; color:#354862; }
+.m4-report .chart-wrap { position:relative; height: 310px; }
+.m4-report .chart-wrap-tall { height: 370px; }
+.m4-report textarea { min-height: 115px; }
+.m4-report .table-responsive { border-radius: 8px; }
+.m4-report .alert { border-radius: 10px; }
+@media(max-width: 767px) {.m4-panel { padding:.9rem;} .m4-report .chart-wrap {height:270px;} }
