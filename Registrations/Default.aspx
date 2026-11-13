@@ -25,6 +25,12 @@
     </asp:Panel>
 
     <asp:Panel ID="pnlHistory" runat="server" Visible="false">
+        <div class="mb-3">
+    <a href="<%= ResolveUrl("~/Registrations/Modify.aspx") %>"
+       class="btn btn-outline-primary">
+        Change / Cancel
+    </a>
+</div>
         <p class="text-muted">Total: <asp:Literal ID="litTotal" runat="server" Mode="Encode" />. All times shown in Malaysia time (UTC+08:00).</p>
         <div class="table-responsive">
             <table class="table table-striped table-hover align-middle">
