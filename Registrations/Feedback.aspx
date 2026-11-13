@@ -1,4 +1,4 @@
-<%@ Page Title="Submit Event Feedback" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" ValidateRequest="false" CodeBehind="Feedback.aspx.cs" Inherits="PRG3204_Project_Group4.Registrations.Feedback" %>
+<%@ Page Title="Submit Event Feedback" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Feedback.aspx.cs" Inherits="PRG3204_Project_Group4.Registrations.Feedback" %>
 <asp:Content ID="FeedbackHead" ContentPlaceHolderID="head" runat="server">
     <style>.feedback-card{max-width:820px;margin:2rem auto;padding:1.5rem;border:1px solid #dee2e6;border-radius:12px;background:#fff}</style>
 </asp:Content>
@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="<%= txtComments.ClientID %>">Comments (optional)</label>
-                <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="5" MaxLength="1000" />
+                <asp:TextBox ID="txtComments" runat="server" ValidateRequestMode="Disabled" CssClass="form-control" TextMode="MultiLine" Rows="5" MaxLength="1000" />
                 <div class="form-text">Plain text only (no HTML tags). Maximum 1,000 characters.</div>
             </div>
             <div class="mb-3">

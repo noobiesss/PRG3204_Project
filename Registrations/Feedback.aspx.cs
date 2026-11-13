@@ -30,7 +30,10 @@ namespace PRG3204_Project_Group4.Registrations
                 return;
             }
             if (!String.Equals(Convert.ToString(Session["Role"]), "Student", StringComparison.OrdinalIgnoreCase))
-                throw new HttpException(403, "Only students may submit feedback.");
+            {
+                Response.Redirect("~/Account/AccessDenied.aspx", true);
+                return;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -88,7 +91,10 @@ ORDER BY e.EndDateTime DESC;";
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
             if (CurrentUserId <= 0 || !String.Equals(Convert.ToString(Session["Role"]), "Student", StringComparison.OrdinalIgnoreCase))
-                throw new HttpException(403, "Access denied.");
+            {
+                Response.Redirect("~/Account/AccessDenied.aspx", true);
+                return;
+            }
 
             int registrationId, rating;
             if (!Int32.TryParse(ddlRegistration.SelectedValue, out registrationId) ||
@@ -103,7 +109,7 @@ ORDER BY e.EndDateTime DESC;";
                 ShowMessage("Comments must contain 1,000 characters or fewer.", false);
                 return;
             }
-            // Page-level ValidateRequest=false prevents a raw <b> input from causing HTTP 500.
+            // ValidateRequestMode="Disabled" on txtComments stops a raw <b> input from causing HTTP 500.
             // Reject markup in the application with a friendly message; always HTML-encode output.
             if (comments.IndexOf('<') >= 0 || comments.IndexOf('>') >= 0)
             {
