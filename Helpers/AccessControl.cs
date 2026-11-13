@@ -6,8 +6,9 @@ namespace PRG3204_Project_Group4.Helpers
     // Checks every page request. Add new protected pages to the lists below.
     public static class AccessControl
     {
-        private static readonly string[] StaffPages = { "~/Events/Manage.aspx", "~/Reports/Attendance.aspx", "~/Reports/Popular.aspx" };
-        private static readonly string[] LoginPages = { "~/Account/Profile.aspx", "~/Account/ChangePassword.aspx", "~/Enquiries/", "~/Reports/Feedback.aspx", "~/Registrations/" };
+        // Every page in Reports is for staff; the student feedback form is in Registrations
+        private static readonly string[] StaffPages = { "~/Events/Manage.aspx", "~/Reports/" };
+        private static readonly string[] LoginPages = { "~/Account/Profile.aspx", "~/Account/ChangePassword.aspx", "~/Enquiries/", "~/Registrations/" };
 
         public static void CheckRequest(HttpContext context)
         {

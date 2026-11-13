@@ -41,42 +41,6 @@
     <div id="m4FeedbackChartUnavailable" class="alert alert-warning d-none">Charts could not load. Please check the Chart.js connection.</div>
 </div>
 </asp:Panel>
-<asp:Panel ID="pnlStudent" runat="server">
-<div class="m4-report" style="max-width:800px;margin:auto">
-    <div class="m4-eyebrow">M4 / Attendee evaluation</div>
-    <h1 class="m4-title h2 mt-1">Submit event feedback</h1>
-    <p class="m4-subtitle">You can evaluate a completed, non-cancelled event after registering for it. Only one response is permitted per registration. Event times are displayed in Malaysia Time (UTC+8).</p>
-    <asp:Label ID="lblMessage" runat="server" EnableViewState="false" />
-    <asp:Label ID="lblNoEvents" runat="server" CssClass="alert alert-info d-block" Visible="false" Text="No feedback forms are currently available. You must be registered for a completed event that you have not already evaluated." />
-    <asp:Panel ID="pnlForm" runat="server" CssClass="m4-panel">
-        <div class="mb-3"><label class="form-label">Completed event *</label>
-            <asp:DropDownList ID="ddlRegistration" runat="server" CssClass="form-select" />
-        </div>
-        <div class="mb-3"><label class="form-label">Rating *</label>
-            <asp:DropDownList ID="ddlRating" runat="server" CssClass="form-select">
-                <asp:ListItem Value="">-- Select rating --</asp:ListItem>
-                <asp:ListItem Value="1">1 - Very poor</asp:ListItem>
-                <asp:ListItem Value="2">2 - Poor</asp:ListItem>
-                <asp:ListItem Value="3">3 - Average</asp:ListItem>
-                <asp:ListItem Value="4">4 - Good</asp:ListItem>
-                <asp:ListItem Value="5">5 - Excellent</asp:ListItem>
-            </asp:DropDownList>
-        </div>
-        <div class="mb-3"><label class="form-label">Comments (optional)</label>
-            <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" TextMode="MultiLine" MaxLength="1000" Rows="5" placeholder="What went well? What could improve?" />
-            <span class="form-text">Maximum 1,000 characters.</span>
-        </div>
-        <div class="mb-4"><label class="form-label">Would you recommend similar events?</label>
-            <asp:DropDownList ID="ddlRecommend" runat="server" CssClass="form-select">
-                <asp:ListItem Value="">Prefer not to say</asp:ListItem>
-                <asp:ListItem Value="1">Yes</asp:ListItem>
-                <asp:ListItem Value="0">No</asp:ListItem>
-            </asp:DropDownList>
-        </div>
-        <asp:Button ID="btnSubmit" runat="server" Text="Submit evaluation" CssClass="btn btn-primary" OnClick="SubmitButton_Click" />
-    </asp:Panel>
-</div>
-</asp:Panel>
 <script>
 (function () {
     if (!document.getElementById('feedbackRatingsChart')) return;
