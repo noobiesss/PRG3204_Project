@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="PRG3204_Project_Group4.Site" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="PRG3204_Project_Group4.Site" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@
                             <li class="nav-item"><a class="<%: NavClass("~/Events/Search.aspx") %>" href="<%: ResolveUrl("~/Events/Search.aspx") %>">Search</a></li>
                             <asp:PlaceHolder ID="phRegistrations" runat="server" Visible="false">
                                 <li class="nav-item"><a class="<%: NavClass("~/Registrations/Default.aspx") %>" href="<%: ResolveUrl("~/Registrations/Default.aspx") %>">My Registrations</a></li>
-                                <li class="nav-item"><a class="<%: NavClass("~/Reports/Feedback.aspx") %>" href="<%: ResolveUrl("~/Reports/Feedback.aspx") %>">Event Feedback</a></li>
+                                <li class="nav-item"><a class="<%: NavClass("~/Registrations/Feedback.aspx") %>" href="<%: ResolveUrl("~/Registrations/Feedback.aspx") %>">Event Feedback</a></li>
                             </asp:PlaceHolder>
                             <asp:PlaceHolder ID="phContact" runat="server" Visible="false">
                                 <li class="nav-item"><a class="<%: NavClass("~/Enquiries/Contact.aspx") %>" href="<%: ResolveUrl("~/Enquiries/Contact.aspx") %>">Contact Organizer</a></li>
@@ -41,6 +41,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a class="<%: DropdownClass("~/Reports/Attendance.aspx") %>" href="<%: ResolveUrl("~/Reports/Attendance.aspx") %>">Attendance Summary</a></li>
                                         <li><a class="<%: DropdownClass("~/Reports/Popular.aspx") %>" href="<%: ResolveUrl("~/Reports/Popular.aspx") %>">Popular Events</a></li>
+                                        <li><a class="<%: DropdownClass("~/Reports/MarkAttendance.aspx") %>" href="<%: ResolveUrl("~/Reports/MarkAttendance.aspx") %>">Mark Attendance</a></li>
                                         <li><a class="<%: DropdownClass("~/Reports/Feedback.aspx") %>" href="<%: ResolveUrl("~/Reports/Feedback.aspx") %>">Feedback Results</a></li>
                                     </ul>
                                 </li>
