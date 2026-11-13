@@ -7,7 +7,7 @@ namespace PRG3204_Project_Group4.Helpers
     public static class AccessControl
     {
         private static readonly string[] StaffPages = { "~/Events/Manage.aspx", "~/Reports/Attendance.aspx", "~/Reports/Popular.aspx" };
-        private static readonly string[] LoginPages = { "~/Account/Profile.aspx", "~/Account/ChangePassword.aspx", "~/Enquiries/", "~/Reports/Feedback.aspx" };
+        private static readonly string[] LoginPages = { "~/Account/Profile.aspx", "~/Account/ChangePassword.aspx", "~/Enquiries/", "~/Reports/Feedback.aspx", "~/Registrations/" };
 
         public static void CheckRequest(HttpContext context)
         {

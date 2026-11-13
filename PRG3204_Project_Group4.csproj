@@ -67,6 +67,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Registrations\Create.aspx" />
+    <Content Include="Registrations\Logs.aspx" />
+    <Content Include="Registrations\Modify.aspx" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Styles\MyStyle.css" />
     <Content Include="Styles\M4Reports.css" />
@@ -110,9 +112,25 @@
     <Compile Include="Registrations\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Registrations\Logs.aspx.cs">
+      <DependentUpon>Logs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registrations\Logs.aspx.designer.cs">
+      <DependentUpon>Logs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registrations\Modify.aspx.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registrations\Modify.aspx.designer.cs">
+      <DependentUpon>Modify.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\RegistrationChangeService.cs" />
     <Compile Include="Services\RegistrationService.cs" />
+    <Compile Include="Services\SearchAndEnquiryService.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -147,12 +165,9 @@
     </Compile>
     <Compile Include="Events\Manage.aspx.designer.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
-    </Compile> 
-	  
+    </Compile>
     <Compile Include="Helpers\EventStatus.cs" />
-	  
     <Compile Include="Registrations\Default.aspx.cs">
-		
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
