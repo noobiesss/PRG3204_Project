@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -18,6 +18,7 @@ namespace PRG3204_Project_Group4.Events
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Helpers.EventStatus.UpdateStatuses();
             if (!CanManage) { Response.Redirect("~/Account/Login.aspx", true); return; }
             if (!IsPostBack) { LoadCategories(); LoadMyEvents(); }
         }
@@ -55,12 +56,13 @@ namespace PRG3204_Project_Group4.Events
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid) { Message("Please correct the highlighted fields.", false); return; }
             if (!CanManage) return;
             int categoryId, capacity; DateTime startMY, endMY;
             string title = txtTitle.Text.Trim(), location = txtLocation.Text.Trim();
             if (title.Length == 0 || title.Length > 200 || location.Length == 0 || location.Length > 200 ||
                 !int.TryParse(ddlCategory.SelectedValue, out categoryId) || categoryId <= 0 ||
-                !int.TryParse(txtCapacity.Text, out capacity) || capacity <= 0 ||
+                !int.TryParse(txtCapacity.Text, out capacity) || capacity <= 0 || capacity > 10000 ||
                 !ParseMY(txtStartDate.Text, out startMY) || !ParseMY(txtEndDate.Text, out endMY))
             { Message("Fill in valid title, category, location, dates and capacity.", false); return; }
             if (endMY <= startMY) { Message("End time must be after start time.", false); return; }
