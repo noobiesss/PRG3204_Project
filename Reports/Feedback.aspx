@@ -1,6 +1,6 @@
 <%@ Page Title="Event Feedback" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Feedback.aspx.cs" Inherits="PRG3204_Project_Group4.Reports.Feedback" %>
 <asp:Content ID="FeedbackHead" ContentPlaceHolderID="head" runat="server">
-    <link href="~/Styles/M4Reports.css" rel="stylesheet" runat="server" />
+    <link href="<%= ResolveUrl("~/Styles/M4Reports.css") %>" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.6.1/dist/chart.umd.min.js"></script>
 </asp:Content>
 <asp:Content ID="FeedbackBody" ContentPlaceHolderID="MainContent" runat="server">

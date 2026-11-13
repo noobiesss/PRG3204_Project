@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="PRG3204_Project_Group4.Site" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="PRG3204_Project_Group4.Site" %>
 
 <!DOCTYPE html>
 <html lang="en">
