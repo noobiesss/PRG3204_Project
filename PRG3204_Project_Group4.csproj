@@ -83,6 +83,8 @@
     <Content Include="Reports\Attendance.aspx" />
     <Content Include="Reports\Popular.aspx" />
     <Content Include="Reports\Feedback.aspx" />
+    <Content Include="Reports\MarkAttendance.aspx" />
+    <Content Include="Registrations\Feedback.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\Profile.aspx" />
@@ -207,6 +209,20 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Reports\Feedback.aspx.designer.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MarkAttendance.aspx.cs">
+      <DependentUpon>MarkAttendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\MarkAttendance.aspx.designer.cs">
+      <DependentUpon>MarkAttendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registrations\Feedback.aspx.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registrations\Feedback.aspx.designer.cs">
       <DependentUpon>Feedback.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Login.aspx.cs">
