@@ -8,7 +8,7 @@ namespace PRG3204_Project_Group4.Helpers
     {
         // Every page in Reports is for staff; the student feedback form is in Registrations
         private static readonly string[] StaffPages = { "~/Events/Manage.aspx", "~/Reports/" };
-        private static readonly string[] LoginPages = { "~/Account/Profile.aspx", "~/Account/ChangePassword.aspx", "~/Enquiries/", "~/Registrations/" };
+        private static readonly string[] LoginPages = { "~/Account/Profile.aspx", "~/Account/ChangePassword.aspx", "~/Reports/Feedback.aspx", "~/Enquiries/", "~/Registrations/" };
 
         public static void CheckRequest(HttpContext context)
         {
