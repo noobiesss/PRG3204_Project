@@ -16,13 +16,13 @@
         </div>
         <div class="mb-2">
             <label for="<%= txtSubject.ClientID %>" class="form-label">Subject *</label>
-            <asp:TextBox ID="txtSubject" runat="server" CssClass="form-control" MaxLength="150" />
+            <asp:TextBox ID="txtSubject" runat="server" ValidateRequestMode="Disabled" CssClass="form-control" MaxLength="150" />
             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtSubject" Display="Dynamic"
                 CssClass="text-danger small" ErrorMessage="Subject is required." />
         </div>
         <div class="mb-2">
             <label for="<%= txtMessage.ClientID %>" class="form-label">Message *</label>
-            <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" Rows="5" CssClass="form-control" MaxLength="1000" />
+            <asp:TextBox ID="txtMessage" runat="server" ValidateRequestMode="Disabled" TextMode="MultiLine" Rows="5" CssClass="form-control" MaxLength="1000" />
             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtMessage" Display="Dynamic"
                 CssClass="text-danger small" ErrorMessage="Message is required." />
             <asp:RegularExpressionValidator runat="server" ControlToValidate="txtMessage" Display="Dynamic"

@@ -34,7 +34,7 @@
         </div>
         <div class="mb-2">
             <label for="<%= txtReason.ClientID %>" class="form-label">Reason (optional)</label>
-            <asp:TextBox ID="txtReason" runat="server" CssClass="form-control" MaxLength="500" />
+            <asp:TextBox ID="txtReason" runat="server" ValidateRequestMode="Disabled" CssClass="form-control" MaxLength="500" />
         </div>
         <div>
             <asp:Button ID="btnConfirmChange" runat="server" Text="Confirm change" CssClass="btn btn-primary"

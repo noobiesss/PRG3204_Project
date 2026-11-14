@@ -36,7 +36,7 @@ SELECT e.EventId, e.Title, c.CategoryName, u.FullName AS OrganizerName, e.Locati
 FROM dbo.Events e
 JOIN dbo.Categories c ON c.CategoryId = e.CategoryId
 JOIN dbo.Users u ON u.UserId = e.OrganizerId
-WHERE e.Status = N'Upcoming'
+WHERE e.Status = N'Upcoming' AND e.StartDateTime > SYSUTCDATETIME()
   AND (@CategoryId IS NULL OR e.CategoryId = @CategoryId)
   AND (@OrganizerId IS NULL OR e.OrganizerId = @OrganizerId)
   AND (@FromUtc IS NULL OR (e.StartDateTime >= @FromUtc AND e.StartDateTime < @ToUtc))
@@ -76,7 +76,7 @@ ORDER BY e.StartDateTime;", connection))
         public static DataTable GetUpcomingEvents()
         {
             return EventSearchService.Query(
-                "SELECT EventId, Title FROM dbo.Events WHERE Status = N'Upcoming' ORDER BY StartDateTime;");
+                "SELECT EventId, Title FROM dbo.Events WHERE Status = N'Upcoming' AND StartDateTime > SYSUTCDATETIME() ORDER BY StartDateTime;");
         }
 
         // Returns null on success, otherwise the error message to show.
